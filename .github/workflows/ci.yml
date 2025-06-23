@@ -14,7 +14,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Run Chef Delivery
-        uses: actionshub/chef-delivery@main
+        uses: actionshub/chef-delivery@37d5a3bb7153c5d994249644a70f7d6f1d2a920e
         env:
           CHEF_LICENSE: accept-no-persist
 
@@ -24,7 +24,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Run yaml Lint
-        uses: actionshub/yamllint@main
+        uses: actionshub/yamllint@184f72d121829c82b16569eccceb713b2c19d89d
 
   mdl:
     runs-on: ubuntu-latest
@@ -32,7 +32,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Run Markdown Lint
-        uses: actionshub/markdownlint@main
+        uses: actionshub/markdownlint@6c82ff529253530dfbf75c37570876c52692835f
 
   integration:
     needs: [mdl, yamllint, delivery]
@@ -57,9 +57,9 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Install Chef
-        uses: actionshub/chef-install@main
+        uses: actionshub/chef-install@7bb3b3d73e3495589eac4880759c8eacc8f488e3
       - name: Dokken
-        uses: actionshub/test-kitchen@main
+        uses: actionshub/test-kitchen@939c105d7257a960e788afa50dada6833f31ea33
         env:
           CHEF_LICENSE: accept-no-persist
           KITCHEN_LOCAL_YAML: kitchen.dokken.yml
